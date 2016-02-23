@@ -1,15 +1,7 @@
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-require 'capybara/rails'
-class ActiveSupport::TestCase
-  fixtures :all
-end
+require 'test_helper'
 
-class FeatureTest < ActionDispatch::IntegrationTest
-  include Capybara::DSL
-
-  def login_user
+class UserCanLoginTest < FeatureTest
+  test "existing user can login to app" do
     user = User.create(username: "nweiland", password: "password")
 
     visit login_path
